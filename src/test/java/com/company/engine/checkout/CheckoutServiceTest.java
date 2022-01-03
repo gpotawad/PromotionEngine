@@ -21,6 +21,7 @@ public class CheckoutServiceTest extends Object {
     PromotionService promotionService = null;
     Sku a = null,b = null,c = null,d = null;
     CheckoutService checkoutService = null;
+
     @Before
     public void setUp() throws Exception {
         activePromotionMap = new HashMap<>();
@@ -46,7 +47,12 @@ public class CheckoutServiceTest extends Object {
         cart = null;
     }
 
-
+    /**
+     * Scenario : Calculate total Cart (multiple cart item) amount after applying promotion to eligible sku
+     * Given : Cart with  cart Items and active promotions applied
+     * when : Cart has 1 item of 'A' , 1 item of 'B' and 1 item of 'C'
+     * then : total cost after applying promotion is 100
+     */
     @Test
     public void whenOneAOneBOneCExistsTotalAfterPromotionIs100() {
         cart.add(new CartItem(a.getSkuId(),1, a.getUnitPrice()));
@@ -56,6 +62,12 @@ public class CheckoutServiceTest extends Object {
         Assert.assertEquals(100,cartTotal);
     }
 
+    /**
+     * Scenario : Calculate total Cart (multiple cart item) amount after applying promotion to eligible sku
+     * Given : Cart with  cart Items and active promotions applied
+     * when : Cart has 5 item of 'A' , 5 item of 'B' and 1 item of 'C'
+     * then : total cost after applying promotion is 370
+     */
     @Test
     public void whenFiveAFiveBOneCExistsTotalAfterPromotionIs370() {
         cart.add(new CartItem(a.getSkuId(),5, a.getUnitPrice()));
@@ -65,6 +77,12 @@ public class CheckoutServiceTest extends Object {
         Assert.assertEquals(100,cartTotal);
     }
 
+    /**
+     * Scenario : Calculate total Cart (multiple cart item) amount after applying promotion to eligible sku
+     * Given : Cart with  cart Items and active promotions applied
+     * when : Cart has 3 item of 'A' , 5 item of 'B' , 1 item of 'C' and 1 item of 'D'
+     * then : total cost after applying promotion is 280
+     */
     @Test
     public void whenThreeAFiveBOneCOneDExistsTotalAfterPromotionIs280() {
         cart.add(new CartItem(a.getSkuId(),3, a.getUnitPrice()));
@@ -75,10 +93,16 @@ public class CheckoutServiceTest extends Object {
         Assert.assertEquals(100,cartTotal);
     }
 
+    /**
+     * Scenario : Calculate total Cart (multiple cart item) amount after applying promotion to eligible sku
+     * Given : Cart with  no cart Items and active promotions applied
+     * when : Cart has 0 cart items
+     * then : total cost after applying promotion is 0
+     */
     @Test
     public void testEmptyCart() {
         cart = new Cart();
         int cartTTotal = checkoutService.checkoutCartWithPromo(cart,activePromotionMap);
-        Assert.assertEquals(100,cartTTotal);
+        Assert.assertEquals(0,cartTTotal);
     }
 }
