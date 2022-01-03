@@ -25,6 +25,7 @@ public class CheckoutServiceTest extends Object {
     public void setUp() throws Exception {
         activePromotionMap = new HashMap<>();
         checkoutService = new CheckoutService();
+        cart = new Cart();
         a = new Sku('A',50);
         b = new Sku('B',30);
         c = new Sku('C',20);
