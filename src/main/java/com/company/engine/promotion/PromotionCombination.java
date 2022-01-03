@@ -10,7 +10,6 @@ public class PromotionCombination extends Promotion {
     }
 
     @Override
-    public int computePromotionTotal(CartItem cartItem) {
-        return 0;
+    public int computePromotionTotal(CartItem cartItem, Cart cart) {
     }
 }

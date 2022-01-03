@@ -10,7 +10,7 @@ public class PromotionBulkItem extends Promotion {
     }
 
     @Override
-    public int computePromotionTotal(CartItem cartItem) {
+    public int computePromotionTotal(CartItem cartItem, Cart cart) {
         int quantity = cartItem.getQuantity();
         if (quantity >= this.getQuantity()) {
             int promoUnits = quantity / this.getQuantity();
