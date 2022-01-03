@@ -1,4 +1,7 @@
 package com.company.engine.cart;
 
-public class Cart {
+import java.util.HashSet;
+
+public class Cart extends HashSet<CartItem>{
+
 }
