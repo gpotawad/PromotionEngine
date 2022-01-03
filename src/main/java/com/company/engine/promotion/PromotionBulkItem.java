@@ -10,7 +10,6 @@ public class PromotionBulkItem extends Promotion {
     }
 
     @Override
-    public int calculatePromoPrice(CartItem cartItem) {
-        return 0;
+    public int computePromotionTotal(CartItem cartItem) {
     }
 }

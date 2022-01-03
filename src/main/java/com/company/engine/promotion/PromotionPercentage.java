@@ -10,7 +10,7 @@ public class PromotionPercentage extends Promotion {
     }
 
     @Override
-    public int calculatePromoPrice(CartItem cartItem) {
+    public int computePromotionTotal(CartItem cartItem) {
         return 0;
     }
 }
