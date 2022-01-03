@@ -15,7 +15,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CheckoutServiceTest extends Object {
+public class CheckoutServiceTest {
     Cart cart = null;
     Map<Character, Promotion> activePromotionMap = null;
     PromotionService promotionService = null;
