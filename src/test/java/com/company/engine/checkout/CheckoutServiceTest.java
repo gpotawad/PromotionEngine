@@ -31,11 +31,11 @@ public class CheckoutServiceTest extends Object {
         b = new Sku('B',30);
         c = new Sku('C',20);
         d = new Sku('D',15);
-        Promotion promotion = PromotionFactory.createPromotion(PromoType.N_ITEM,3,100, null);
+        Promotion promotion = PromotionFactory.createPromotion(PromoType.N_ITEM,3,130, null);
         activePromotionMap.put(a.getSkuId(),promotion);
         promotion = PromotionFactory.createPromotion(PromoType.N_ITEM,2,45, null);
         activePromotionMap.put(b.getSkuId(),promotion);
-        promotion = PromotionFactory.createPromotion(PromoType.COMBINED,1,30, new char[]{'D'});
+        promotion = PromotionFactory.createPromotion(PromoType.COMBINED,1,30, new char[]{'C','D'});
         activePromotionMap.put(c.getSkuId(),promotion);
         activePromotionMap.put(d.getSkuId(),promotion);
     }
