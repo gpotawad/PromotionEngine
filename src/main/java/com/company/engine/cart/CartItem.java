@@ -29,6 +29,7 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        setTotalPrice(quantity * unitPrice);
     }
 
     public int getUnitPrice() {
@@ -37,6 +38,7 @@ public class CartItem {
 
     public void setUnitPrice(int unitPrice) {
         this.unitPrice = unitPrice;
+        setTotalPrice(quantity * unitPrice);
     }
 
     public int getTotalPrice() {
