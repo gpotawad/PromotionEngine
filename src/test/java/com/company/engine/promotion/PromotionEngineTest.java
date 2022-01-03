@@ -24,8 +24,9 @@ public class PromotionEngineTest {
         activePromotionMap.put(a.getSkuId(),promotion);
         promotion = PromotionFactory.createPromotion(PromoType.N_ITEM,2,45, null);
         activePromotionMap.put(b.getSkuId(),promotion);
-        promotion = PromotionFactory.createPromotion(PromoType.COMBINED,1,30, new char[]{'D'});
+        promotion = PromotionFactory.createPromotion(PromoType.COMBINED,1,30, new char[]{'C','D'});
         activePromotionMap.put(c.getSkuId(),promotion);
+        activePromotionMap.put(d.getSkuId(),promotion);
     }
 
     @After
@@ -43,7 +44,7 @@ public class PromotionEngineTest {
      */
     @Test
     public void whenThreeAExistsTotalAfterPromotionIs130() {
-        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(a.getSkuId(),3,a.getUnitPrice()), activePromotionMap.get(a.getSkuId()));
+        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(a.getSkuId(),3,a.getUnitPrice()), activePromotionMap.get(a.getSkuId()), null);
         Assert.assertEquals(130,cartPrice);
     }
 
@@ -56,7 +57,7 @@ public class PromotionEngineTest {
      */
     @Test
     public void whenTwoBExistsTotalAfterPromotionIs45() {
-        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(b.getSkuId(),2,b.getUnitPrice()), activePromotionMap.get(b.getSkuId()));
+        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(b.getSkuId(),2,b.getUnitPrice()), activePromotionMap.get(b.getSkuId()), null);
         Assert.assertEquals(45,cartPrice);
     }
 
@@ -69,10 +70,15 @@ public class PromotionEngineTest {
     @Test
     public void whenCAndDExistsCombinedTotalAfterPromotionIs30() {
         Cart cart = new Cart();
-        cart.add(new CartItem(c.getSkuId(),1,c.getUnitPrice()));
-        cart.add(new CartItem(d.getSkuId(),1,d.getUnitPrice()));
-        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(c.getSkuId(),1,c.getUnitPrice()),activePromotionMap.get(c.getSkuId()));
-        Assert.assertEquals(30,cartPrice);
+        CartItem cCartItem = new CartItem(c.getSkuId(),1,c.getUnitPrice());
+        CartItem dCartItem = new CartItem(d.getSkuId(),1,d.getUnitPrice());
+        cart.add(cCartItem);
+        cart.add(dCartItem);
+        int cartPriceC = promotionService.computeItemPromotionTotal(cCartItem, activePromotionMap.get(c.getSkuId()), cart);
+        Assert.assertEquals(0,cartPriceC);
+        int cartPriceD = promotionService.computeItemPromotionTotal(dCartItem, activePromotionMap.get(c.getSkuId()), cart);
+        Assert.assertEquals(30,cartPriceD);
+        Assert.assertEquals(30,cartPriceC+cartPriceD);
     }
 
     /**
@@ -84,7 +90,7 @@ public class PromotionEngineTest {
     @Test
     public void whenNoPromotionExists() {
         activePromotionMap.remove(a.getSkuId());
-        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(a.getSkuId(),3,a.getUnitPrice()), activePromotionMap.get(a.getSkuId()));
+        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(a.getSkuId(),3,a.getUnitPrice()), activePromotionMap.get(a.getSkuId()), null);
         Assert.assertEquals(150,cartPrice);
     }
 }

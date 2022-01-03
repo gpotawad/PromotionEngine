@@ -1,5 +1,6 @@
 package com.company.engine.promotion;
 
+import com.company.engine.cart.Cart;
 import com.company.engine.cart.CartItem;
 
 public abstract class  Promotion {
@@ -15,7 +16,7 @@ public abstract class  Promotion {
         setQuantity(quantity);
     }
 
-    public abstract int computePromotionTotal(CartItem cartItem);
+    public abstract int computePromotionTotal(CartItem cartItem, Cart cart);
 
     public PromoType getPromoType() {
         return promoType;
