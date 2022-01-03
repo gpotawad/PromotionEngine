@@ -40,7 +40,7 @@ public class CartItem {
     }
 
     public int getTotalPrice() {
-        return quantity * unitPrice;
+        return totalPrice;
     }
 
     public void setTotalPrice(int totalPrice) {

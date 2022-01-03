@@ -37,6 +37,7 @@ public class CheckoutServiceTest extends Object {
         activePromotionMap.put(b.getSkuId(),promotion);
         promotion = PromotionFactory.createPromotion(PromoType.COMBINED,1,30, new char[]{'D'});
         activePromotionMap.put(c.getSkuId(),promotion);
+        activePromotionMap.put(d.getSkuId(),promotion);
     }
 
     @After
@@ -74,7 +75,7 @@ public class CheckoutServiceTest extends Object {
         cart.add(new CartItem(b.getSkuId(),5, b.getUnitPrice()));
         cart.add(new CartItem(c.getSkuId(),1, c.getUnitPrice()));
         int cartTotal = checkoutService.checkoutCartWithPromo(cart,activePromotionMap);
-        Assert.assertEquals(100,cartTotal);
+        Assert.assertEquals(370,cartTotal);
     }
 
     /**
@@ -90,7 +91,7 @@ public class CheckoutServiceTest extends Object {
         cart.add(new CartItem(c.getSkuId(),1, c.getUnitPrice()));
         cart.add(new CartItem(d.getSkuId(),1, d.getUnitPrice()));
         int cartTotal = checkoutService.checkoutCartWithPromo(cart,activePromotionMap);
-        Assert.assertEquals(100,cartTotal);
+        Assert.assertEquals(280,cartTotal);
     }
 
     /**
@@ -102,7 +103,7 @@ public class CheckoutServiceTest extends Object {
     @Test
     public void testEmptyCart() {
         cart = new Cart();
-        int cartTTotal = checkoutService.checkoutCartWithPromo(cart,activePromotionMap);
-        Assert.assertEquals(0,cartTTotal);
+        int cartTotal = checkoutService.checkoutCartWithPromo(cart,activePromotionMap);
+        Assert.assertEquals(0,cartTotal);
     }
 }
