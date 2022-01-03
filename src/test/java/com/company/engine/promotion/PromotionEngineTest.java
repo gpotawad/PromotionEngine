@@ -15,6 +15,7 @@ public class PromotionEngineTest {
     @Before
     public void setUp() throws Exception {
         activePromotionMap = new HashMap<>();
+        promotionService = new PromotionService();
         a = new Sku('A',50);
         b = new Sku('B',30);
         c = new Sku('C',20);
@@ -36,13 +37,13 @@ public class PromotionEngineTest {
 
     @Test
     public void whenThreeAExistsTotalAfterPromotionIs130() {
-        int cartPrice = promotionService.calculatePromotionTotal(new CartItem(a.getSkuId(),3,a.getUnitPrice()), activePromotionMap.get(a.getSkuId()));
+        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(a.getSkuId(),3,a.getUnitPrice()), activePromotionMap.get(a.getSkuId()));
         Assert.assertEquals(130,cartPrice);
     }
 
     @Test
     public void whenTwoBExistsTotalAfterPromotionIs45() {
-        int cartPrice = promotionService.calculatePromotionTotal(new CartItem(b.getSkuId(),2,b.getUnitPrice()), activePromotionMap.get(b.getSkuId()));
+        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(b.getSkuId(),2,b.getUnitPrice()), activePromotionMap.get(b.getSkuId()));
         Assert.assertEquals(45,cartPrice);
     }
 
@@ -51,14 +52,14 @@ public class PromotionEngineTest {
         Cart cart = new Cart();
         cart.add(new CartItem(c.getSkuId(),1,c.getUnitPrice()));
         cart.add(new CartItem(d.getSkuId(),1,d.getUnitPrice()));
-        int cartPrice = promotionService.calculatePromotionTotal(new CartItem(c.getSkuId(),1,c.getUnitPrice()),activePromotionMap.get(c.getSkuId()));
+        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(c.getSkuId(),1,c.getUnitPrice()),activePromotionMap.get(c.getSkuId()));
         Assert.assertEquals(30,cartPrice);
     }
 
     @Test
     public void whenNoPromotionExists() {
         activePromotionMap.remove(a.getSkuId());
-        int cartPrice = promotionService.calculatePromotionTotal(new CartItem(a.getSkuId(),3,a.getUnitPrice()), activePromotionMap.get(a.getSkuId()));
+        int cartPrice = promotionService.computeItemPromotionTotal(new CartItem(a.getSkuId(),3,a.getUnitPrice()), activePromotionMap.get(a.getSkuId()));
         Assert.assertEquals(150,cartPrice);
     }
 }
