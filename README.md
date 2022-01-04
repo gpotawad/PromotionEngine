@@ -7,33 +7,21 @@ The promotion engine will need to calculate the total order value after applying
 
 The promotion engine should be modular to allow for more promotion types to be added at a later date (e.g. a future promotion could be x% of a SKU unit price). For this coding exercise you can assume that the promotions will be mutually exclusive; in other words if one is applied the other promotions will not apply
 
-### Test Setup
+#### Test Setup
 Unit price for SKU IDs <br />
-|   A - 50   |    B  - 30    |    C - 20    |    D - 15   | 
+ A - 50   ,    B  - 30    ,    C - 20    ,    D - 15   
 
 #### Active Promotions<br />
 3 of A's for 130<br />
 2 of B's for 45 <br />
 C & D for 30<br />
 
-#### Scenario A<br />
- 1 * A  = 50 <br />
- 1 * B = 30 <br />
- 1 * C = 20 <br />
-Total	= 100<br />
-
-#### Scenario B	<br />
-5 * A	= 130 + 2*50 <br />
-5 * B	=	45 + 45 + 30<br />
-1 * C	=	20<br />
-Total	= 370<br />
-
-#### Scenario C<br />
-3	* A	 = 130 <br />
-5	* B	 = 45 + 45 + 1 * 30<br />
-1	* C	 = - <br />
-1	* D	 = 30 <br />
-Total	 = 280 <br />
+|Scenario A |  Scenario B | Scenario C | 
+| ------------ | ------------ | ------------ |
+|  1 * A = 50  | 5 * A = 130 + 2*50  |  3 * A = 130  |
+|  1 * B = 30 |  5 * B = 45 + 45 + 30  |  5 * B = 45 + 45 + 1 * 30  |
+|  1 * C = 20 |  1 * C = 20  |  1 * C = - And 1 * D = 30 |
+|  Total = 100  |  Total = 370  | Total = 280  |
 # Solution
 Console application using Java 11 and TDD approach followed using Junit4
 ### Modules
