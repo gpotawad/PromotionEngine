@@ -13,7 +13,12 @@ public class CartServiceImpl implements CartService {
      */
     @Override
     public boolean addToCart(Sku sku, Integer quantity) {
-        return false;
+        CartItem item = myCart.getCartItem(sku.getSkuId());
+        //checks if sku / item is already in cart
+        if(item!=null){
+            item.setQuantity(item.getQuantity()+quantity);
+        }
+        return myCart.add( new CartItem(sku.getSkuId(), quantity, sku.getUnitPrice()));
     }
 
     @Override
