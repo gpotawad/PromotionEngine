@@ -9,14 +9,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class EngineUtilityTest {
     EngineUtility engineUtility = null;
     Promotion promotion1 = null, promotion2 = null;
     Sku a = null;
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         engineUtility = new EngineUtilityImpl();
         a = new Sku('A',50);
         promotion1 = PromotionFactory.createPromotion(PromoType.N_ITEM,3,130, null);
@@ -24,7 +22,7 @@ public class EngineUtilityTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown()  {
         engineUtility = null;
         a = null;
         promotion1 = null;
@@ -40,7 +38,7 @@ public class EngineUtilityTest {
     @Test
     public void mapSkuToPromotion_whenPromoMapsOnceToSKU_returnsTrue() {
         boolean mapped = engineUtility.mapSkuToPromotion(a.getSkuId(), promotion1);
-        Assert.assertEquals(true,mapped);
+        Assert.assertTrue(mapped);
     }
 
     /**
@@ -53,7 +51,7 @@ public class EngineUtilityTest {
     public void mapSkuToPromotion_whenPromoMaps2ndTimeToSKU_returnsFalse() {
         engineUtility.mapSkuToPromotion(a.getSkuId(), promotion1);
         boolean mapped = engineUtility.mapSkuToPromotion(a.getSkuId(), promotion2);
-        Assert.assertEquals(false,mapped);
+        Assert.assertFalse(mapped);
     }
 
     /**
@@ -67,7 +65,7 @@ public class EngineUtilityTest {
         engineUtility.mapSkuToPromotion(a.getSkuId(), promotion1);
         engineUtility.getActivePromotionMap().remove(a.getSkuId());
         boolean mapped = engineUtility.mapSkuToPromotion(a.getSkuId(), promotion2);
-        Assert.assertEquals(true,mapped);
+        Assert.assertTrue(mapped);
     }
 
     @Test

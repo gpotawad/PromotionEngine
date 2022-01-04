@@ -23,7 +23,7 @@ public class CheckoutServiceImplTest {
     CheckoutServiceImpl checkoutService = null;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         activePromotionMap = new HashMap<>();
         checkoutService = new CheckoutServiceImpl();
         cart = new Cart();
@@ -41,7 +41,7 @@ public class CheckoutServiceImplTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown()  {
         promotionService = null;
         a = null; b = null; c = null; d = null;
         activePromotionMap = null;
