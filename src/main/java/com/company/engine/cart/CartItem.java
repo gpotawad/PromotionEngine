@@ -3,10 +3,10 @@ package com.company.engine.cart;
 import java.util.Objects;
 
 public class CartItem {
-    char sku;
-    int quantity;
-    int unitPrice;
-    int totalPrice;
+    private char sku;
+    private int quantity;
+    private int unitPrice;
+    private int totalPrice;
 
     public CartItem(char skuId, int quantity, int unitPrice) {
         setSku(skuId);
