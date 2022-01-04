@@ -65,4 +65,11 @@ public class EngineUtilityTest {
         boolean mapped = engineUtility.mapSkuToPromotion(a.getSkuId(), promotion2);
         Assert.assertEquals(true,mapped);
     }
+
+    @Test
+    public void setup_whenSetup_thenSkuListAndActivePromotionMapGetsStubbed(){
+        engineUtility.setup();
+        Assert.assertEquals(4,engineUtility.getActivePromotionMap().size());
+        Assert.assertEquals(4,engineUtility.getSkuList().size());
+    }
 }
