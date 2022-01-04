@@ -10,7 +10,7 @@ public class Cart extends HashSet<CartItem>{
      */
     public CartItem getCartItem(char sku){
         try {
-            return this.stream().filter(item -> item.sku == sku).findFirst().get();
+            return this.stream().filter(item -> item.getSku() == sku).findFirst().get();
         }catch (Exception exception){
             return null;
         }

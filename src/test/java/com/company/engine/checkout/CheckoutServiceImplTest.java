@@ -15,17 +15,17 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CheckoutServiceTest {
+public class CheckoutServiceImplTest {
     Cart cart = null;
     Map<Character, Promotion> activePromotionMap = null;
     PromotionService promotionService = null;
     Sku a = null,b = null,c = null,d = null;
-    CheckoutService checkoutService = null;
+    CheckoutServiceImpl checkoutService = null;
 
     @Before
     public void setUp() throws Exception {
         activePromotionMap = new HashMap<>();
-        checkoutService = new CheckoutService();
+        checkoutService = new CheckoutServiceImpl();
         cart = new Cart();
         a = new Sku('A',50);
         b = new Sku('B',30);
