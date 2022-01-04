@@ -25,6 +25,10 @@ public class EngineUtilityTest {
 
     @After
     public void tearDown() throws Exception {
+        engineUtility = null;
+        a = null;
+        promotion1 = null;
+        promotion2 = null;
     }
 
     /**
