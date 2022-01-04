@@ -25,6 +25,10 @@ public class EngineUtilityTest {
 
     @After
     public void tearDown() throws Exception {
+        engineUtility = null;
+        a = null;
+        promotion1 = null;
+        promotion2 = null;
     }
 
     /**
@@ -64,5 +68,12 @@ public class EngineUtilityTest {
         engineUtility.getActivePromotionMap().remove(a.getSkuId());
         boolean mapped = engineUtility.mapSkuToPromotion(a.getSkuId(), promotion2);
         Assert.assertEquals(true,mapped);
+    }
+
+    @Test
+    public void setup_whenSetup_thenSkuListAndActivePromotionMapGetsStubbed(){
+        engineUtility.setup();
+        Assert.assertEquals(4,engineUtility.getActivePromotionMap().size());
+        Assert.assertEquals(4,engineUtility.getSkuList().size());
     }
 }
