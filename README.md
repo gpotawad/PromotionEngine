@@ -1,5 +1,5 @@
 # PromotionEngine
-implemented a simple promotion engine for a checkout process. Cart contains a list of single character SKU ids (A, B, C.	) over which the promotion engine will need to run.
+Implement a simple promotion engine for a checkout process. Cart contains a list of single character SKU ids (A, B, C.	) over which the promotion engine will need to run.
 The promotion engine will need to calculate the total order value after applying the 2 promotion types
 
 * buy 'n' items of a SKU for a fixed price (3 A's for 130)
@@ -75,7 +75,7 @@ Checkout module has checkout services which is an entry point to apply promotion
 * checkoutCartWithPromo(Cart cart, Map<Character, Promotion> activePromotionMap)
 
 checkoutCartWithPromo takes cart and active promotion instance and apply those promotions if they are mapped to sku in cart. This method return total amount of cart with applied  promotions.
-#### engine and main applicaton
+#### Engine and Main application
 For this solution engine unit has engineUtility class which caters to MainApplication. engineUtilityImpl has below methods
 * void setup() 
 * boolean addSku(Sku sku)
@@ -102,7 +102,7 @@ Test classes are also divided in to pakage as per modules to test each functions
   * Scenario D - testEmptyCart 
 * #### engine -> EngineUtilityTest<br/>
   * mapSkuToPromotion_whenPromoMapsOnceToSKU_returnsTrue - map one promo to sku A
-  * mapSkuToPromotion_whenPromoMaps2ndTimeToSKU_returnsFalse - map 2nd promo when first promo is already maps to A
+  * mapSkuToPromotion_whenPromoMaps2ndTimeToSKU_returnsFalse - map 2nd promo when first promo is already mapped to A
   * mapSkuToPromotion_whenPromoMaps2ndTimeAfterRemovingExistingPromoToSKU_returnsTrue - map 2nd promo after removing first promo to A
   * setup_whenSetup_thenSkuListAndActivePromotionMapGetsStubbed - test if skuList and activePromotionMap is getting Stubbed for mainApplication
 * #### promotion -> PromotionEngineTest <br/>

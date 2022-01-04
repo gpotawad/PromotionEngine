@@ -22,14 +22,14 @@ public class MainApplication {
         engine.setup();
         System.out.println("************ PROMOTION ENGINE **************");
         while(true){
-            System.out.println("Select Product from the list.");
+            System.out.println("Select a product from the list to add it to te cart.");
             engine.getSkuList().forEach((character, sku) -> System.out.print(character + " = " + sku.getUnitPrice() + "/- \t"));
-            System.out.println("\nType 'X' to apply promotion to this cart");
+            System.out.println("\nNote - type 'X' to apply promotion to this cart");
             String sCharProduct = reader.readLine();
             if("X".equalsIgnoreCase(sCharProduct)) break;
-            System.out.print("Enter Product quantity. \n");
+            System.out.print("Enter product quantity. \n");
             String quantityStr = reader.readLine();
-            Integer quantity = 0;
+            int quantity = 0;
             if(!quantityStr.isBlank()){
                 quantity = Integer.parseInt(quantityStr);
             }

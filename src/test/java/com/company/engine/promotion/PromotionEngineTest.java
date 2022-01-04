@@ -13,7 +13,7 @@ public class PromotionEngineTest {
     Sku a = null,b = null,c = null,d = null;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         activePromotionMap = new HashMap<>();
         promotionService = new PromotionService();
         a = new Sku('A',50);
@@ -30,7 +30,7 @@ public class PromotionEngineTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown()  {
         promotionService = null;
         a = null; b = null; c = null; d = null;
         activePromotionMap = null;

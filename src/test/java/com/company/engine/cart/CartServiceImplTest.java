@@ -1,28 +1,23 @@
 package com.company.engine.cart;
 
-import com.company.engine.engine.EngineUtilityImpl;
-import com.company.engine.promotion.PromoType;
-import com.company.engine.promotion.PromotionFactory;
 import com.company.engine.sku.Sku;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class CartServiceImplTest {
     CartService cartService = null;
     Sku a;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         cartService = new CartServiceImpl();
         a = new Sku('A',50);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         cartService = null;
         a = null;
     }
