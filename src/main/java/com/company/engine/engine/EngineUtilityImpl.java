@@ -21,7 +21,16 @@ public class EngineUtilityImpl implements EngineUtility{
      */
     @Override
     public void setup() {
-
+        Promotion promo1 = createPromotion(PromoType.N_ITEM,3,130,null);
+        Promotion promo2 = createPromotion(PromoType.N_ITEM,2,45,null);
+        Promotion promo3 = createPromotion(PromoType.COMBINED,0,30,new char[]{'C','D'});
+        addSku(new Sku('A',50));
+        addSku(new Sku('B',30));
+        addSku(new Sku('C',20));
+        addSku(new Sku('D',15));
+        mapSkuToPromotion('A',promo1);
+        mapSkuToPromotion('B',promo2);
+        mapSkuToPromotion('C',promo3);
     }
 
     @Override
