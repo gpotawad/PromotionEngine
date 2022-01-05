@@ -24,6 +24,7 @@ C & D for 30<br />
 |  Total = 100  |  Total = 370  | Total = 280  |
 # Solution
 Console application using Java 11 and TDD approach followed using Junit4
+The solution is not hardcoded with fixed SKU and promotion but they are stubbed with some values for this particular solution to execute. EngineUtility has a setup method that is overridden in EngineUtilityImpl this setup method can be reused in MainApplication to change SKUs and promotions etc.
 ### Modules
 Application is segregated into 4 modules
 * Cart
